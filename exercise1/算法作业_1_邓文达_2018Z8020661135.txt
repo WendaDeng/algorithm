@@ -1,0 +1,20 @@
+实现数组循环右移k个位置的算法思想为：
+假设数组长度为n，先将数组前n - k个元素进行反转（前后倒置），再将数组后k个元素进行反转，最后将整个数组再反转一次，得到的结果就是将数组循环右移k个位置后的结果。
+
+算法的伪代码如下：
+Algorithm shiftToRight(E[], k)
+	n = E.length
+	reverse(E[], 0, n - k - 1)
+	reverse(E[], n - k, n - 1)
+	reverse(E[], 0, n - 1)
+
+Algorithm reverse(E[], start, end)
+	while(start < end)
+		temp = E[start]
+		E[start] = E[end]
+		E[end] = temp
+		start++
+		end--
+	end
+
+此算法的时间复杂度为O(n)。算法的主体是三次reverse函数的调用，而reverse函数的主体则是一个while循环。其中while循环会执行（end - start + 1）/ 2次，每次循环执行的基本操作次数为常数c（c = 5）。则三次调用reverse函数总的基本操作次数为[（n - k）+ k + n] * 5 = 10n，则算法的时间复杂度为O(10n)= O(n)。
