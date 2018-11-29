@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+#-*- conding: utf-8 -*-
 import sys
 
 def reverse(arr, start, end):
